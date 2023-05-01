@@ -1,0 +1,101 @@
+# https://medium.com/@vhsilva.ap/configurando-laravel-6-nginx-e-postgresql-com-docker-9ad29c53d5
+
+# https://stackoverflow.com/questions/39493490/provide-static-ip-to-docker-containers-via-docker-compose
+
+version: '3'
+
+services: 
+  web:
+    container_name: my_web
+    restart: always
+    build: .
+    volumes: 
+      - ./:/var/www/
+    depends_on: 
+#      - db
+      - postgres-compose
+
+#    networks:
+#      - postgres-network
+
+    networks:
+      postgres-network:
+        ipv4_address: 10.0.10.1
+
+#    ports:
+#      - "9000:9000"
+
+  postgres-compose:
+    restart: always
+    image: postgres
+    container_name: my_db
+#    build: ./.docker_db
+    environment:
+      POSTGRES_PASSWORD: "bi#pjePENTAHO"
+      PGADMIN_DEFAULT_EMAIL: "postgres"
+#      TZ: 'GMT+8'
+#      PGTZ: 'GMT+8'
+
+
+    ports:
+      - "5432:5432"
+    volumes:
+#      - /home/renatogroffe/Desenvolvimento/Docker-Compose/PostgreSQL:/var/lib/postgresql/data 
+      - /volumes/php+nginx+postgres/data:/var/lib/postgresql/data 
+#      - /volumes/media/user1lock/Data/projetos/TJRJ/temp/h1_pje.dmp:/temp/h1_pje.dmp
+
+#    networks:
+#      - postgres-network
+
+    networks:
+      postgres-network:
+        ipv4_address: 10.0.10.2
+
+
+
+#  db:
+#    image: postgres:12.0-alpine
+#    restart: always
+#    environment:
+#      POSTGRES_PASSWORD: postgres
+#      POSTGRES_DB: blog
+#    volumes: 
+#    - "./.docker/dbdata:/var/lib/postgresql/data"
+#    ports:
+#      - "5432:5432"
+
+  nginx:
+    container_name: my_app
+    build: ./.docker/nginx
+    restart: always
+    ports:
+      - "8000:80"
+    volumes: 
+      - ./:/var/www
+    depends_on: 
+      - web
+
+#    networks:
+#      - postgres-network
+
+    networks:
+      postgres-network:
+        ipv4_address: 10.0.10.3
+
+
+
+networks: 
+  postgres-network:
+    driver: bridge
+
+
+#networks:
+#  vpcbr:
+#    driver: bridge
+
+    ipam:
+     config:
+       - subnet: 10.0.10.0/16
+         gateway: 10.0.0.250
+
+
