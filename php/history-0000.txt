@@ -1,0 +1,162 @@
+    1  cd ~/
+    2  ls -la
+    3  cd /
+    4  ls -la
+    5  cd ~/
+    6  ls -la
+    7  mkddir ~/Downloads
+    8  sudo mkddir ~/Downloads
+    9  sudo mkdir ~/Downloads
+   10  cd ~/Downloads/
+   11  ls /mnt/c/User
+   12  ls /mnt/c
+   13  ls /mnt/c/User
+   14  sudo ls /mnt/c/User
+   15  sudo ls /mnt/c/Users
+   16  sudo ls /mnt/c/Users/profd/Downloads/
+   17  sudo ls /mnt/c/Users/profd/Downloads/php*
+   18  cp  /mnt/c/Users/profd/Downloads/php*
+   19  cp  /mnt/c/Users/profd/Downloads/php* .
+   20  sudo cp  /mnt/c/Users/profd/Downloads/php* .
+   21  ls -la
+   22  gunzip
+   23  apt update
+   24  sudo apt update
+   25  sudo cp  /mnt/c/Users/profd/Downloads/php
+   26  sudo cd /mnt/c/Users/profd/Downloads/php
+   27  cd /mnt/c/Users/profd/Downloads/php
+   28  ls -la
+   29  sudo apt install docker
+   30  sudo apt install docker-compose
+   31  sudo groupadd docker
+   32  sudo gpasswd -a $USER docker
+   33  sudo usermod -aG docker $USER
+   34  ls -a
+   35  ls -la 
+   36  docker-compose -f ./docker-compose-rede-2.yml up -d
+   37  ls -la
+   38  docker-compose -f ./docker-compose-rede-2.yml up -d
+   39  gedit ./docker-compose-rede-2.yml
+   40  ls -la
+   41  docker-compose up -d --build
+   42  ls -la
+   43  sudo chmod +777 -R .
+   44  docker-compose up -d --build
+   45  ls -la
+   46  ls -la .docker
+   47  cd ..
+   48  ls
+   49  cd php
+   50  docker-compose up -d --build
+   51  docker ps -a
+   52  docker start
+   53  sudo service docker start
+   54  exit
+   55  sudo service docker start
+   56  sudo service status docker
+   57  sudo service status 
+   58  sudo service 
+   59  sudo service --status-all
+   60  sudo service --status docker
+   61  ls -la /etc
+   62  ls -la /etc/res*
+   63  sudo cat /etc/resolv.conf 
+   64  sudo apt install namo
+   65  sudo apt install nano
+   66  sudo nano /etc/resolv.conf 
+   67  sudo cat /etc/resolv.conf 
+   68  sudo apt update
+   69  sudo apt install docker
+   70  sudo service --status docker
+   71  find ./ -type f -name "*docker*"
+   72  sudo find ./ -type f -name "*docker*"
+   73  docker ps -a
+   74  sudo service start docker
+   75  sudo service --help
+   76  sudo service --add
+   77  sudo service --help
+   78  sudo apt remove docker
+   79  sudo apt autoremove
+   80  docker
+   81  docker service
+   82  docker start
+   83  cd Downloads/
+   84  ls
+   85  cd php
+   86  ls -la
+   87  docker-compose up -d
+   88  sudo apt update
+   89  sudo apt install docker.io
+   90  sudo apt install docker
+   91  sudo systemctl status docker
+   92  sudo systemctl start docker
+   93  sudo service start docker
+   94  sudo systemctl status docker
+   95  sudo systemctl --status-all
+   96  sudo systemctl
+   97  sudo systemctl --help
+   98  sudo systemctl status
+   99  sudo systemctl status docker
+  100  exit
+  101  sudo systemctl status
+  102  sudo systemctl start docker
+  103  docker ps -a
+  104  sudo service start docker
+  105  apt update
+  106  sudo apt update
+  107  sudo apt install docker-compose
+  108  sudo apt install docker
+  109  service docker.io stop
+  110  sudo service docker.io stop
+  111  sudo apt-get remove docker docker-engine docker.io containerd runc
+  112  sudo apt remove docker docker-engine docker.io containerd runc
+  113  sudo apt remove docker  docker.io containerd runc
+  114  sudo apt-get update
+  115  sudo apt-get install     ca-certificates     curl     gnupg
+  116  sudo install -m 0755 -d /etc/apt/keyrings
+  117  cd /mnt/c/Users/profd/Downloads/php/
+  118  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+  119  sudo chmod a+r /etc/apt/keyrings/docker.gpg
+  120  echo   "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+  121    "$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" |   sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+  122  sudo apt-get update
+  123  sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+  124  docker ps -a
+  125  sudo docker run hello-world
+  126  docker-compose ps
+  127  
+  128  sudo service docker start
+  129  docker-compose ps
+  130  docker-compose up -d
+  131  docker ps -a
+  132  docker exec -u root -it php_postgres-compose_1 /bin/bash
+  133  ls -la
+  134  ls -la /volumes/php+nginx+postgres/data
+  135  sudo ls -la /volumes/php+nginx+postgres/data
+  136  sudo ls -la /volumes/php+nginx+postgres
+  137  docker ps -a
+  138  docker stop d0f409fe2bc7 
+  139  docker-compose up -d
+  140  docker ps  -a
+  141  docker exec -u root -it php_postgres-compose_1 /bin/bash
+  142  apt update
+  143  sudo apt update
+  144  sudo apt install net-tools
+  145  ifconfig
+  146  ifconfig|grep inet
+  147  ifconfig|grep "inet "
+  148  exit
+  149  ipconfig
+  150  ifconfig
+  151  cd /mnt/c/Users/profd/Downloads/php
+  152  docker-compose ps
+  153  sudo service docker start
+  154  docker-compose ps
+  155  docker-compose up -d
+  156  docker exec -u root -it php_postgres-compose_1 /bin/bash
+  157  docker ps -a
+  158  docker rm -f 2 9 6
+  159  docker-compose up -d --build
+  160  docker ps -a
+  161  docker exec -u root -it my_db /bin/bash
+  162  history > /mnt/c/Users/profd/Downloads/php/history-0000.txt
