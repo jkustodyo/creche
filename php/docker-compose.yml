@@ -2,6 +2,10 @@
 
 # https://stackoverflow.com/questions/39493490/provide-static-ip-to-docker-containers-via-docker-compose
 
+# reset de senha wsl
+# https://valchan.com.br/wsl-reset-pass/
+# EEeric1000
+
 version: '3'
 
 services: 
@@ -18,46 +22,29 @@ services:
     networks:
       - postgres-network
 
-#!    networks:
-#!      postgres-network:
-#!        ipv4_address: 10.0.10.1
-
-#    ports:
-#      - "9000:9000"
+    ports:
+      - "9000:9000"
 
   postgres-compose:
     container_name: my_db
     restart: always
-    image: postgres
+#    image: postgres
+    build: ./.docker/postgres
     environment:
       POSTGRES_PASSWORD: "bi#pjePENTAHO"
       PGADMIN_DEFAULT_EMAIL: "postgres"
     ports:
+#psql -U postgres -p 5432 -h localhost"nome do banco"<"nome do arquivo de backup".sql
       - "15432:5432"
     volumes:
 #      - /home/renatogroffe/Desenvolvimento/Docker-Compose/PostgreSQL:/var/lib/postgresql/data 
-      - /volumes/php+nginx+postgres/data:/var/lib/postgresql/data 
+#      - /volumes/php+nginx+postgres/data:/var/lib/postgresql/data 
+#      - /volumes/php+nginx+postgres/data2:/var/lib/postgresql/data 
+      - /volumes/php+nginx+postgres/data3333:/var/lib/postgresql/data 
       - ./:/temp
 
     networks:
       - postgres-network
-
-#!    networks:
-#!      postgres-network:
-#!        ipv4_address: 10.0.10.2
-
-
-
-#  db:
-#    image: postgres:12.0-alpine
-#    restart: always
-#    environment:
-#      POSTGRES_PASSWORD: postgres
-#      POSTGRES_DB: blog
-#    volumes: 
-#    - "./.docker/dbdata:/var/lib/postgresql/data"
-#    ports:
-#      - "5432:5432"
 
   nginx:
     container_name: my_app
@@ -73,24 +60,8 @@ services:
     networks:
       - postgres-network
 
-#!    networks:
-#!      postgres-network:
-#!        ipv4_address: 10.0.10.3
-
-
 
 networks: 
   postgres-network:
     driver: bridge
-
-
-#networks:
-#  vpcbr:
-#    driver: bridge
-
-#!    ipam:
-#!     config:
-#!       - subnet: 10.0.10.0/16
-#!         gateway: 10.0.0.252
-
 
