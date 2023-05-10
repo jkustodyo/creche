@@ -28,8 +28,8 @@ services:
   postgres-compose:
     container_name: my_db
     restart: always
-#    image: postgres
-    build: ./.docker/postgres
+    image: postgres
+#    build: ./.docker/postgres
     environment:
       POSTGRES_PASSWORD: "bi#pjePENTAHO"
       PGADMIN_DEFAULT_EMAIL: "postgres"
@@ -40,7 +40,8 @@ services:
 #      - /home/renatogroffe/Desenvolvimento/Docker-Compose/PostgreSQL:/var/lib/postgresql/data 
 #      - /volumes/php+nginx+postgres/data:/var/lib/postgresql/data 
 #      - /volumes/php+nginx+postgres/data2:/var/lib/postgresql/data 
-      - /volumes/php+nginx+postgres/data3333:/var/lib/postgresql/data 
+#      - /volumes/php+nginx+postgres/data3333:/var/lib/postgresql/data 
+      - /volumes/php/creche/data:/var/lib/postgres/data
       - ./:/temp
 
     networks:
