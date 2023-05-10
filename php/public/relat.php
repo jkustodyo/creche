@@ -392,7 +392,7 @@ $sTexto.="&nbsp;&nbsp;&nbsp;".$row_resp_aluno['nome']."\n\n";
 
 <script type="text/javascript">
 <!--
-alert(<?=$setY;?>);
+//alert(<?=$setY;?>);
 setScrollXY_Y(<?=$setY;?>);
 -->
 </script>
