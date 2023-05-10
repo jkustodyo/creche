@@ -11,9 +11,68 @@
 
 	<script type="text/javascript">
 		<!--
-      function selecionar(aluno,pergunta){
+
+
+
+
+
+
+
+
+function getScrollXY() {
+  var scrOfX = 0, scrOfY = 0;
+  if( typeof( window.pageYOffset ) == 'number' ) {
+    //Netscape compliant
+    scrOfY = window.pageYOffset;
+    scrOfX = window.pageXOffset;
+  } else if( document.body && ( document.body.scrollLeft || document.body.scrollTop ) ) {
+    //DOM compliant
+    scrOfY = document.body.scrollTop;
+    scrOfX = document.body.scrollLeft;
+  } else if( document.documentElement && ( document.documentElement.scrollLeft || document.documentElement.scrollTop ) ) {
+    //IE6 standards compliant mode
+    scrOfY = document.documentElement.scrollTop;
+    scrOfX = document.documentElement.scrollLeft;
+  }
+//  return [ scrOfX, scrOfY ];
+  return scrOfY;
+
+//alert( 'scrOfX:' + scrOfX + ', scrOfY:' + scrOfY );
+
+}
+
+function setScrollXY_Y(Y) {
+  var scrOfX = 0, scrOfY = 0;
+  if( typeof( window.pageYOffset ) == 'number' ) {
+    //Netscape compliant
+window.scrollBy(10, Y);
+//    window.pageYOffset=Y;
+  } else if( document.body && ( document.body.scrollLeft || document.body.scrollTop ) ) {
+    //DOM compliant
+    document.body.scrollTop = Y;
+  } else if( document.documentElement && ( document.documentElement.scrollLeft || document.documentElement.scrollTop ) ) {
+    //IE6 standards compliant mode
+    document.documentElement.scrollTop = Y;
+  }
+}
+
+
+
+
+
+
+      function selecionar22(aluno,pergunta){
 		  window.location.replace('relat.php?a='+aluno+'&z='+pergunta);
 	  }
+
+      function selecionar(aluno,pergunta){
+
+var height = getScrollXY();
+
+
+		  window.location.replace('relat.php?a='+aluno+'&z='+pergunta + '&h='+height);
+	  }
+
 
 
     function copiarTexto() {
@@ -113,7 +172,12 @@ a:hover {
          
          //zzz. lista3<br><br>
          
-         
+
+
+$setY=$_GET['h'];
+
+
+
          // https://www.postgresqltutorial.com/postgresql-php/connect/
          //$conn = pg_pconnect("host=10.0.10.2; dbname=creche; username=postgres; password=bi#pjePENTAHO");
          // https://www.php.net/manual/en/function.pg-fetch-row.php
@@ -323,6 +387,15 @@ $sTexto.="&nbsp;&nbsp;&nbsp;".$row_resp_aluno['nome']."\n\n";
 
 
 <textarea style="visibility: hidden;" name="texto" id="texto" form="usrform"><?=$sTexto;?></textarea>
+
+
+
+<script type="text/javascript">
+<!--
+alert(<?=$setY;?>);
+setScrollXY_Y(<?=$setY;?>);
+-->
+</script>
 
 
 
