@@ -1,4 +1,19 @@
 <!DOCTYPE html>
+
+
+<?
+
+//echo "teste";
+
+$ip = file('ip_app.txt');
+$ip_host = $ip[0];
+
+
+//ip a | grep inet | grep -v inet6 | grep eth0 |cut -d" " -f6
+
+?>
+
+
 <html>
    <head>
       <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
@@ -109,6 +124,7 @@ $debug=$_SERVER["REMOTE_ADDR"]=='10.0.0.18';
                 $paramshost			= "172.18.0.2";
                 $paramshost			= "172.18.0.2";
                 $paramshost			= "172.19.0.2";
+                $paramshost			= $ip_host;
                 $paramsport			= 5432;
                 $paramsdatabase		= "creche";
                 $paramsuser			= "postgres";
