@@ -14,7 +14,7 @@ RUN yum install -y epel-release maven wget net-tools \
 && chgrp root /startUpScript.sh \
 && chmod 777 /startUpScript.sh \
 && mkdir /temp \
-&& ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1' | grep -v '127*'  > ip_db
+&& ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1' | grep -v '127*'  > /temp/ip_db.txt
 
 CMD ["/bin/bash","-c","/startUpScript.sh && tail -f /dev/null"]
 

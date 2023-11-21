@@ -18,12 +18,11 @@ services:
     depends_on: 
 #      - db
       - postgres-compose
-
     networks:
       - postgres-network
-
     ports:
       - "9000:9000"
+
 
   postgres-compose:
     container_name: my_db
@@ -35,17 +34,58 @@ services:
       PGADMIN_DEFAULT_EMAIL: "postgres"
     ports:
 #psql -U postgres -p 5432 -h localhost"nome do banco"<"nome do arquivo de backup".sql
-      - "15432:5432"
+      - "5432:5432"
     volumes:
 #      - /home/renatogroffe/Desenvolvimento/Docker-Compose/PostgreSQL:/var/lib/postgresql/data 
-#      - /volumes/php+nginx+postgres/data:/var/lib/postgresql/data 
-#      - /volumes/php+nginx+postgres/data2:/var/lib/postgresql/data 
-#      - /volumes/php+nginx+postgres/data3333:/var/lib/postgresql/data 
+#      - /volumes/postgres/PJe_data:/var/lib/postgresql/data
       - /volumes/php/creche/data:/var/lib/postgres/data
       - ./:/temp
 
     networks:
       - postgres-network
+
+  postgres-pje:
+    container_name: my_db_pje
+    restart: always
+    image: postgres
+#    build: ./.docker/postgres
+    environment:
+#      POSTGRES_PASSWORD: "P123456"
+      POSTGRES_PASSWORD: "bi#pjePENTAHO"
+      PGADMIN_DEFAULT_EMAIL: "postgres"
+    ports:
+#psql -U postgres -p 5432 -h localhost"nome do banco"<"nome do arquivo de backup".sql
+      - "15433:5432"
+    volumes:
+#      - /home/renatogroffe/Desenvolvimento/Docker-Compose/PostgreSQL:/var/lib/postgresql/data 
+#      - /volumes/php/creche/data:/var/lib/postgres/data
+      - /volumes/postgres/PJe_data22:/var/lib/postgresql/data
+      - /volumes/postgres/splitado:/tmp
+      - ./:/temp
+
+    networks:
+      - postgres-network
+
+
+
+  postgres-pje-2g:
+    container_name: my_db_pje_2g
+    restart: always
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: "bi#pjePENTAHO"
+      PGADMIN_DEFAULT_EMAIL: "postgres"
+    ports:
+      - "15434:5432"
+    volumes:
+      - /volumes/postgres/PJe_data_2g:/var/lib/postgresql/data
+      - /volumes/postgres/splitado:/tmp
+      - ./:/temp
+
+    networks:
+      - postgres-network
+
+
 
   nginx:
     container_name: my_app
@@ -61,8 +101,6 @@ services:
     networks:
       - postgres-network
 
-
 networks: 
   postgres-network:
     driver: bridge
-
