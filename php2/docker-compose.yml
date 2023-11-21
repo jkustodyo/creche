@@ -1,0 +1,35 @@
+# https://medium.com/@vhsilva.ap/configurando-laravel-6-nginx-e-postgresql-com-docker-9ad29c53d5
+
+version: '3'
+
+services: 
+
+  my2_web:
+    restart: always
+    build: .
+    volumes: 
+      - ./:/var/www/
+    depends_on: 
+      - my2_db
+
+  my2_db:
+    image: postgres:12.0-alpine
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: blog
+    volumes: 
+      - ./.docker/dbdata:/var/lib/postgresql/data
+
+  nginx:
+    build: ./.docker/nginx
+    restart: always
+    ports:
+      - "8000:80"
+    volumes: 
+      - ./:/var/www
+    depends_on: 
+      - my2_web
+
+
+
